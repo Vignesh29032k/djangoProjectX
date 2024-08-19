@@ -1,0 +1,48 @@
+ <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        {% load static %}
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>User Info</title>
+    </head>
+    <body>
+      
+        <h1>User Information</h1>
+        <table border = "1" rules ="all" width ="500px">
+            <thead>
+                <th>UserName</th>
+                <th>Email ID</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </thead>
+            <tr>
+                {% for user in userinfo %}
+        
+                <th>{{user.username}}</th>
+                <th>{{user.email}}</th>
+                <th>
+                    <a href ="updateinfo/{{user.id}}">Update</a>
+                </th>
+                <th>
+                    <a href = "deleteinfo/{{user.id}}">Delete</a>
+                </th>
+            </tr>
+            {% endfor %}
+        </table>
+        <br>
+        {% if request.user.is_staff %}
+        <a href = "/register">
+            <button>Add New User</button>
+        </a>
+        {% endif %}
+        <br><br>
+        <a href = "{% url 'user-logout' %}">
+            <button>Logout</button>
+        </a>
+    
+    </body>
+    
+
+   
+</html>

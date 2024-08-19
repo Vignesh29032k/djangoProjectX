@@ -1,0 +1,18 @@
+<html>
+    {% load static %}
+    <head>
+        <link rel ="stylesheet" href ="{% static 'css/authentication.css' %}">
+    </head>
+    <h1>Register Now!</h1>
+
+    <form method = "POST" autocomplete="off">
+
+        {% csrf_token %}
+
+        {{registerform.as_p}}
+
+        <input type = "submit" value = "Register">
+
+
+    </form>
+</html>
